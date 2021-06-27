@@ -8730,7 +8730,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Fairy', 'Psychic'],
     bs: {hp: 80, at: 100, df: 123, sa: 122, sd: 120, sp: 80},
     weightkg: 155.5,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Hubris'},
     baseSpecies: 'Venusaur-Delta',
   },
   'Charmander-Delta': {
@@ -8758,7 +8758,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Ghost', 'Dragon'],
     bs: {hp: 78, at: 104, df: 78, sa: 159, sd: 115, sp: 100},
     weightkg: 100.5,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Noctem'},
     baseSpecies: 'Charizard-Delta',
   },
   'Squirtle-Delta': {
@@ -8918,7 +8918,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Fire', 'Poison'],
     bs: {hp: 75, at: 85, df: 80, sa: 135, sd: 105, sp: 45},
     weightkg: 8.5,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Chlorofury'},
     baseSpecies: 'Sunflora-Delta',
   },
   'Bergmite-Delta': {
@@ -9730,7 +9730,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Ghost'],
     bs: {hp: 95, at: 70, df: 109, sa: 130, sd: 155, sp: 81},
     weightkg: 162,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Absolution'},
     baseSpecies: 'Milotic-Delta',
   },
   'Clamperl-Delta': {
@@ -10209,7 +10209,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Psychic', 'Electric'],
     bs: {hp: 100, at: 100, df: 100, sa: 100, sd: 100, sp: 100},
     weightkg: 9,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Event Horizon'},
   },
   'Poliwrath-Mega': {
     types: ['Water', 'Fighting'],
@@ -10250,7 +10250,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Normal', 'Psychic'],
     bs: {hp: 70, at: 80, df: 95, sa: 130, sd: 95, sp: 85},
     weightkg: 41.5,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Spectral Jaws'},
     baseSpecies: 'Girafarig',
   },
   'Steelix-Mega-Fire': {
@@ -10264,28 +10264,28 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Fire'],
     bs: {hp: 60, at: 70, df: 100, sa: 150, sd: 100, sp: 50},
     weightkg: 55,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Vaporization'},
     baseSpecies: 'Magcargo',
   },
   'Donphan-Mega': {
     types: ['Ground'],
     bs: {hp: 90, at: 150, df: 150, sa: 60, sd: 100, sp: 50},
     weightkg: 120,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Irrelephant'},
     baseSpecies: 'Donphan',
   },
   'Miltank-Mega': {
     types: ['Normal'],
     bs: {hp: 95, at: 125, df: 145, sa: 40, sd: 115, sp: 70},
     weightkg: 75.5,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Pendulum'},
     baseSpecies: 'Miltank',
   },
   'Shiftry-Mega': {
     types: ['Grass', 'Dark'],
     bs: {hp: 90, at: 135, df: 70, sa: 125, sd: 60, sp: 100},
     weightkg: 59.6,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Shadow Dance'},
     baseSpecies: 'Shiftry',
   },
   'Flygon-Mega': {
@@ -10306,7 +10306,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Steel', 'Psychic'],
     bs: {hp: 100, at: 100, df: 140, sa: 130, sd: 115, sp: 115},
     weightkg: 1.1,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Periodic Orbit'},
     baseSpecies: 'Jirachi',
   },
   'Crawdaunt-Mega': {
@@ -10320,7 +10320,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Water', 'Fairy'],
     bs: {hp: 95, at: 70, df: 109, sa: 130, sd: 155, sp: 81},
     weightkg: 162,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Prisim Guard'},
     baseSpecies: 'Milotic',
   },
   'Chatot-Mega': {
@@ -10362,7 +10362,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Psychic'],
     bs: {hp: 110, at: 80, df: 65, sa: 160, sd: 90, sp: 80},
     weightkg: 20.1,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Speed Swap'},
     baseSpecies: 'Reuniclus',
   },
   'Gothitelle-Mega': {
@@ -10376,7 +10376,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Ice'],
     bs: {hp: 80, at: 50, df: 65, sa: 115, sd: 150, sp: 135},
     weightkg: 148,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Sleet'},
     baseSpecies: 'Cryogonal',
   },
   'Haxorus-Mega': {
@@ -10390,7 +10390,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Dark', 'Dragon'],
     bs: {hp: 92, at: 130, df: 105, sa: 170, sd: 105, sp: 98},
     weightkg: 160,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Lernean'},
     baseSpecies: 'Hydreigon',
   },
   'Bisharp-Mega': {
@@ -10425,7 +10425,7 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
     types: ['Fire'],
     bs: {hp: 78, at: 89, df: 88, sa: 159, sd: 110, sp: 110},
     weightkg: 79.5,
-    abilities: {0: 'Custom Ability'},
+    abilities: {0: 'Hubris'},
     baseSpecies: 'Typhlosion',
   },
   'Flygon-Armor': {

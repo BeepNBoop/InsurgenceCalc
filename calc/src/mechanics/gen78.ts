@@ -137,6 +137,7 @@ export function calculateSMSS(
     type =
       field.hasWeather('Sun', 'Harsh Sunshine') && !holdingUmbrella ? 'Fire'
       : field.hasWeather('Rain', 'Heavy Rain') && !holdingUmbrella ? 'Water'
+      : field.hasWeather('Darkness') && !holdingUmbrella ? 'Dark'
       : field.hasWeather('Sand') ? 'Rock'
       : field.hasWeather('Hail') ? 'Ice'
       : 'Normal';
@@ -406,11 +407,20 @@ export function calculateSMSS(
        (field.hasWeather('Rain', 'Heavy Rain') && move.hasType('Water'))) {
     baseDamage = pokeRound(OF32(baseDamage * 6144) / 4096);
     desc.weather = field.weather;
+  } else if (!noWeatherBoost && (field.hasWeather('Sun', 'Harsh Sunshine') &&
+        (move.hasType('Dark') || move.hasType('Ghost')))) {
+    baseDamage = pokeRound(OF32(baseDamage * 5529.6) / 4096);
+    desc.weather = field.weather;
   } else if (!noWeatherBoost &&
     (field.hasWeather('Sun') && move.hasType('Water')) ||
     (field.hasWeather('Rain') && move.hasType('Fire'))
   ) {
     baseDamage = pokeRound(OF32(baseDamage * 2048) / 4096);
+    desc.weather = field.weather;
+  } else if (!noWeatherBoost &&
+    (field.hasWeather('Darkness') && move.hasType('Fairy'))
+  ) {
+    baseDamage = pokeRound(OF32(baseDamage * 3072) / 4096);
     desc.weather = field.weather;
   } else if (!noWeatherBoost &&
     (field.hasWeather('Harsh Sunshine') && move.hasType('Water')) ||
@@ -647,7 +657,7 @@ export function calculateBasePowerSMSS(
     break;
   case 'Weather Ball':
     basePower = field.weather && !field.hasWeather('Strong Winds') ? 100 : 50;
-    if (field.hasWeather('Sun', 'Harsh Sunshine', 'Rain', 'Heavy Rain') &&
+    if (field.hasWeather('Sun', 'Harsh Sunshine', 'Rain', 'Heavy Rain', 'Darkness') &&
       attacker.hasItem('Utility Umbrella')) basePower = 50;
     desc.moveBP = basePower;
     break;
@@ -936,7 +946,20 @@ export function calculateBPModsSMSS(
     bpMods.push(2048);
     desc.moveBP = basePower / 2;
     desc.weather = field.weather;
+  } else if (move.named('Solar Beam', 'Solar Blade') &&
+      field.hasWeather('Darkness')) {
+    bpMods.push(1228.8);
+    desc.moveBP = basePower / 3.3333;
+    desc.weather = field.weather;
+  } else if (move.named('Surf') &&
+      field.hasWeather('Darkness')) {
+    bpMods.push(1228.8);
+    desc.moveBP = basePower / 3.3333;
+    desc.weather = field.weather;
   } else if (move.named('Knock Off') && !resistedKnockOffDamage) {
+    bpMods.push(6144);
+    desc.moveBP = basePower * 1.5;
+  } else if (move.named('Surf') && field.hasWeather('Darkness')) {
     bpMods.push(6144);
     desc.moveBP = basePower * 1.5;
   }
@@ -1241,11 +1264,25 @@ export function calculateFinalModsSMSS(
     finalMods.push(field.gameType !== 'Singles' ? 2732 : 2048);
     desc.isReflect = true;
   } else if (
+      field.defenderSide.isReflect && move.category === 'Physical' &&
+      !isCritical && !field.defenderSide.isAuroraVeil && field.hasWeather('Darkness')
+   ) {
+    // doesn't stack with Aurora Veil
+    finalMods.push(field.gameType !== 'Singles' ? 2732 : 1638.4);
+    desc.isReflect = true;
+  } else if (
     field.defenderSide.isLightScreen && move.category === 'Special' &&
     !isCritical && !field.defenderSide.isAuroraVeil
   ) {
     // doesn't stack with Aurora Veil
     finalMods.push(field.gameType !== 'Singles' ? 2732 : 2048);
+    desc.isLightScreen = true;
+  } else if (
+    field.defenderSide.isLightScreen && move.category === 'Special' &&
+    !isCritical && !field.defenderSide.isAuroraVeil && field.hasWeather('Darkness')
+  ) {
+    // doesn't stack with Aurora Veil
+    finalMods.push(field.gameType !== 'Singles' ? 2732 : 2170.88);
     desc.isLightScreen = true;
   }
   if (field.defenderSide.isAuroraVeil && !isCritical) {

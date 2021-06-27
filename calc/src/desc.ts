@@ -482,9 +482,12 @@ function getEndOfTurn(
   const texts = [];
 
   if (field.hasWeather('Sun', 'Harsh Sunshine')) {
-    if (defender.hasAbility('Dry Skin', 'Solar Power')) {
+    if (defender.hasAbility('Dry Skin', 'Solar Power', 'Heliophobia')) {
       damage -= Math.floor(defender.maxHP() / 8);
       texts.push(defender.ability + ' damage');
+    } else if (defender.hasAbility('Phototroph')) {
+      damage += Math.floor(defender.maxHP() / 8);
+      texts.push('Phototroph recovery');
     }
   } else if (field.hasWeather('Rain', 'Heavy Rain')) {
     if (defender.hasAbility('Dry Skin')) {
@@ -493,6 +496,11 @@ function getEndOfTurn(
     } else if (defender.hasAbility('Rain Dish')) {
       damage += Math.floor(defender.maxHP() / 16);
       texts.push('Rain Dish recovery');
+    }
+  }  else if (field.hasWeather('Darkness')) {
+    if (defender.hasAbility('Heliophobia')) {
+      damage += Math.floor(defender.maxHP() / 8);
+      texts.push('Heliophobia recovery');
     }
   } else if (field.hasWeather('Sand')) {
     if (

@@ -892,13 +892,13 @@ function buildDescription(description: RawDesc, attacker: Pokemon, defender: Pok
 function getDescriptionLevels(attacker: Pokemon, defender: Pokemon) {
   if (attacker.level !== defender.level) {
     return [
-      attacker.level === 100 ? '' : `Lvl ${attacker.level}`,
-      defender.level === 100 ? '' : `Lvl ${defender.level}`,
+      attacker.level === 120 ? '' : `Lvl ${attacker.level}`,
+      defender.level === 120 ? '' : `Lvl ${defender.level}`,
     ];
   }
   // There's an argument for showing any level thats not 100, but VGC and LC players
   // probably would rather not see level cruft in their calcs
-  const elide = [100, 50, 5].includes(attacker.level);
+  const elide = [120, 50, 5].includes(attacker.level);
   const level = elide ? '' : `Lvl ${attacker.level}`;
   return [level, level];
 }

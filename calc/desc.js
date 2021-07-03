@@ -399,6 +399,18 @@ function getEndOfTurn(gen, attacker, defender, move, field) {
             texts.push('hail damage');
         }
     }
+    else if (field.hasWeather('Sleet')) {
+        if (defender.hasAbility('Ice Body')) {
+            damage += Math.floor(defender.maxHP() / 16);
+            texts.push('Ice Body recovery');
+        }
+        else if (!defender.hasType('Ice') &&
+            !defender.hasAbility('Magic Guard', 'Overcoat', 'Snow Cloak') &&
+            !defender.hasItem('Safety Goggles')) {
+            damage -= Math.floor(defender.maxHP() / 5);
+            texts.push('Sleet damage');
+        }
+    }
     var loseItem = move.named('Knock Off') && !defender.hasAbility('Sticky Hold');
     if (defender.hasItem('Leftovers') && !loseItem) {
         damage += Math.floor(defender.maxHP() / 16);

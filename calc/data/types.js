@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __generator = (this && this.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
@@ -26,11 +37,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+var e_1, _a;
 exports.__esModule = true;
+
 var util_1 = require("../util");
 var RBY = {
     '???': {
-        category: 'Physical',
         Normal: 1,
         Grass: 1,
         Fire: 1,
@@ -48,7 +71,6 @@ var RBY = {
         Dragon: 1
     },
     Normal: {
-        category: 'Physical',
         '???': 1,
         Normal: 1,
         Grass: 1,
@@ -67,7 +89,6 @@ var RBY = {
         Dragon: 1
     },
     Grass: {
-        category: 'Special',
         '???': 1,
         Normal: 1,
         Grass: 0.5,
@@ -86,7 +107,6 @@ var RBY = {
         Dragon: 0.5
     },
     Fire: {
-        category: 'Special',
         '???': 1,
         Normal: 1,
         Grass: 2,
@@ -105,7 +125,6 @@ var RBY = {
         Dragon: 0.5
     },
     Water: {
-        category: 'Special',
         '???': 1,
         Normal: 1,
         Grass: 0.5,
@@ -124,7 +143,6 @@ var RBY = {
         Dragon: 0.5
     },
     Electric: {
-        category: 'Special',
         '???': 1,
         Normal: 1,
         Grass: 0.5,
@@ -143,7 +161,6 @@ var RBY = {
         Dragon: 0.5
     },
     Ice: {
-        category: 'Special',
         '???': 1,
         Normal: 1,
         Grass: 2,
@@ -162,7 +179,6 @@ var RBY = {
         Dragon: 2
     },
     Flying: {
-        category: 'Physical',
         '???': 1,
         Normal: 1,
         Grass: 2,
@@ -181,7 +197,6 @@ var RBY = {
         Dragon: 1
     },
     Bug: {
-        category: 'Physical',
         '???': 1,
         Normal: 1,
         Grass: 2,
@@ -200,7 +215,6 @@ var RBY = {
         Dragon: 1
     },
     Poison: {
-        category: 'Physical',
         '???': 1,
         Normal: 1,
         Grass: 2,
@@ -219,7 +233,6 @@ var RBY = {
         Dragon: 1
     },
     Ground: {
-        category: 'Physical',
         '???': 1,
         Normal: 1,
         Grass: 0.5,
@@ -238,7 +251,6 @@ var RBY = {
         Dragon: 1
     },
     Rock: {
-        category: 'Physical',
         '???': 1,
         Normal: 1,
         Grass: 1,
@@ -257,7 +269,6 @@ var RBY = {
         Dragon: 1
     },
     Fighting: {
-        category: 'Physical',
         '???': 1,
         Normal: 2,
         Grass: 1,
@@ -276,7 +287,6 @@ var RBY = {
         Dragon: 1
     },
     Psychic: {
-        category: 'Special',
         '???': 1,
         Normal: 1,
         Grass: 1,
@@ -295,7 +305,6 @@ var RBY = {
         Dragon: 1
     },
     Ghost: {
-        category: 'Physical',
         '???': 1,
         Normal: 0,
         Grass: 1,
@@ -314,7 +323,6 @@ var RBY = {
         Dragon: 1
     },
     Dragon: {
-        category: 'Special',
         '???': 1,
         Normal: 1,
         Grass: 1,
@@ -351,7 +359,6 @@ var GSC = util_1.extend(true, {}, RBY, {
     Ghost: { Psychic: 2, Dark: 0.5, Steel: 0.5 },
     Dragon: { Dark: 1, Steel: 0.5 },
     Dark: {
-        category: 'Special',
         '???': 1,
         Normal: 1,
         Grass: 1,
@@ -372,7 +379,6 @@ var GSC = util_1.extend(true, {}, RBY, {
         Steel: 0.5
     },
     Steel: {
-        category: 'Physical',
         '???': 1,
         Normal: 1,
         Grass: 1,
@@ -397,24 +403,45 @@ var ADV = GSC;
 var DPP = GSC;
 var BW = GSC;
 var XY = util_1.extend(true, {}, GSC, {
-    '???': { Fairy: 1, Crystal: 1 },
-    Normal: { Fairy: 1, Crystal: 1 },
-    Grass: { Fairy: 1, Crystal: 1 },
-    Fire: { Fairy: 1, Crystal: 1 },
-    Water: { Fairy: 1, Crystal: 1 },
-    Electric: { Fairy: 1, Crystal: 1 },
-    Ice: { Fairy: 1, Crystal: 1 },
-    Flying: { Fairy: 1, Crystal: 1 },
-    Bug: { Fairy: 0.5, Crystal: 1 },
-    Poison: { Fairy: 2, Crystal: 1 },
-    Ground: { Fairy: 1, Crystal: 1 },
-    Rock: { Fairy: 1, Crystal: 1 },
-    Fighting: { Fairy: 0.5, Crystal: 1 },
-    Psychic: { Fairy: 1, Crystal: 1 },
-    Ghost: { Steel: 1, Fairy: 1, Crystal: 1 },
-    Dragon: { Fairy: 0, Crystal: 1 },
-    Dark: { Steel: 1, Fairy: 0.5, Crystal: 1 },
-    Steel: { Fairy: 2, Crystal: 1 },
+    '???': { Crystal: 1, Fairy: 1, Omnitype: 1 },
+    Normal: { Crystal: 1, Fairy: 1, Omnitype: 0 },
+    Grass: { Crystal: 1, Fairy: 1, Omnitype: 0.5 },
+    Fire: { Crystal: 1, Fairy: 1, Omnitype: 1 },
+    Water: { Crystal: 1, Fairy: 1, Omnitype: 1 },
+    Electric: { Crystal: 1, Fairy: 1, Omnitype: 0 },
+    Ice: { Crystal: 1, Fairy: 1, Omnitype: 1 },
+    Flying: { Crystal: 1, Fairy: 1, Omnitype: 1 },
+    Bug: { Crystal: 1, Fairy: 0.5, Omnitype: 0.5 },
+    Poison: { Crystal: 1, Fairy: 2, Omnitype: 0 },
+    Ground: { Crystal: 1, Fairy: 1, Omnitype: 0 },
+    Rock: { Crystal: 1, Fairy: 1, Omnitype: 2 },
+    Fighting: { Crystal: 1, Fairy: 0.5, Omnitype: 0 },
+    Psychic: { Crystal: 1, Fairy: 1, Omnitype: 0 },
+    Ghost: { Steel: 1, Crystal: 1, Fairy: 1, Omnitype: 0 },
+    Dragon: { Crystal: 1, Fairy: 0, Omnitype: 0 },
+    Dark: { Steel: 1, Crystal: 1, Fairy: 0.5, Omnitype: 0.5 },
+    Steel: { Crystal: 1, Fairy: 2, Omnitype: 0.5 },
+    Crystal: {
+        Bug: 1,
+        Dark: 1,
+        Dragon: 1,
+        Electric: 1,
+        Fairy: 1,
+        Fighting: 1,
+        Fire: 1,
+        Flying: 1,
+        Ghost: 1,
+        Grass: 1,
+        Ground: 1,
+        Ice: 1,
+        Normal: 1,
+        Poison: 1,
+        Psychic: 1,
+        Rock: 1,
+        Steel: 1,
+        Water: 1,
+        Omnitype: 1
+    },
     Fairy: {
         '???': 1,
         Normal: 1,
@@ -435,29 +462,41 @@ var XY = util_1.extend(true, {}, GSC, {
         Dark: 2,
         Steel: 0.5,
         Fairy: 1,
-        Crystal: 1
+        Crystal: 1,
+        Omnitype: 1
     },
-    Crystal: {
-        '???': 1,
-        Normal: 1,
-        Grass: 1,
-        Fire: 1,
-        Water: 1,
-        Electric: 1,
-        Ice: 1,
-        Flying: 1,
-        Bug: 1,
-        Poison: 1,
-        Ground: 1,
+    Omnitype: {
+        prankster: 3,
+        par: 3,
+        brn: 3,
+        trapped: 3,
+        powder: 3,
+        hail: 3,
+        sleet: 3,
+        frz: 3,
+        psn: 3,
+        tox: 3,
+        sandstorm: 3,
+        Bug: 2,
+        Dark: 2,
+        Dragon: 3,
+        Electric: 3,
+        Fairy: 0,
+        Fighting: 3,
+        Fire: 0,
+        Flying: 0,
+        Ghost: 3,
+        Grass: 2,
+        Ground: 3,
+        Ice: 0,
+        Normal: 3,
+        Poison: 3,
+        Psychic: 3,
         Rock: 1,
-        Fighting: 1,
-        Psychic: 1,
-        Ghost: 1,
-        Dragon: 1,
-        Dark: 1,
-        Steel: 1,
-        Fairy: 1,
-        Crystal: 1
+        Steel: 2,
+        Water: 0,
+        Crystal: 0,
+        Omnitype: 0
     }
 });
 var SM = XY;
@@ -502,20 +541,27 @@ var Type = (function () {
         this.kind = 'Type';
         this.id = util_1.toID(name);
         this.name = name;
-        this.category = effectiveness.category;
-        delete effectiveness.category;
         this.effectiveness = effectiveness;
     }
     return Type;
 }());
 var TYPES_BY_ID = [];
-for (var _i = 0, TYPE_CHART_1 = exports.TYPE_CHART; _i < TYPE_CHART_1.length; _i++) {
-    var typeChart = TYPE_CHART_1[_i];
-    var map = {};
-    for (var type in typeChart) {
-        var t = new Type(type, Object.assign({}, typeChart[type]));
-        map[t.id] = t;
+try {
+    for (var TYPE_CHART_1 = __values(exports.TYPE_CHART), TYPE_CHART_1_1 = TYPE_CHART_1.next(); !TYPE_CHART_1_1.done; TYPE_CHART_1_1 = TYPE_CHART_1.next()) {
+        var typeChart = TYPE_CHART_1_1.value;
+        var map = {};
+        for (var type in typeChart) {
+            var t = new Type(type, __assign({}, typeChart[type]));
+            map[t.id] = t;
+        }
+        TYPES_BY_ID.push(map);
     }
-    TYPES_BY_ID.push(map);
+}
+catch (e_1_1) { e_1 = { error: e_1_1 }; }
+finally {
+    try {
+        if (TYPE_CHART_1_1 && !TYPE_CHART_1_1.done && (_a = TYPE_CHART_1["return"])) _a.call(TYPE_CHART_1);
+    }
+    finally { if (e_1) throw e_1.error; }
 }
 //# sourceMappingURL=types.js.map

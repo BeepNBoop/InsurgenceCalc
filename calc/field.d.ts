@@ -1,28 +1,28 @@
-export declare type GameType = 'Singles' | 'Doubles';
-export declare type Terrain = 'Electric' | 'Grassy' | 'Psychic' | 'Misty';
-export declare type Weather = 'Sand' | 'Sun' | 'Rain' | 'Hail' | 'Harsh Sunshine' | 'Heavy Rain' | 'Strong Winds';
-export declare class Field {
+import { State } from './state';
+import { GameType, Weather, Terrain } from './data/interface';
+export declare class Field implements State.Field {
     gameType: GameType;
     weather?: Weather;
     terrain?: Terrain;
     isGravity: boolean;
+    isAuraBreak?: boolean;
+    isFairyAura?: boolean;
+    isDarkAura?: boolean;
     attackerSide: Side;
     defenderSide: Side;
-    constructor(field?: {
-        gameType?: GameType;
-        weather?: Weather;
-        terrain?: Terrain;
-        isGravity?: boolean;
-        attackerSide?: Partial<Side>;
-        defenderSide?: Partial<Side>;
-    });
-    hasWeather(...weathers: Weather[]): boolean | undefined;
+    constructor(field?: Partial<State.Field>);
+    hasWeather(...weathers: Weather[]): boolean;
+    hasTerrain(...terrains: Terrain[]): boolean;
     swap(): this;
     clone(): Field;
 }
-export declare class Side {
+export declare class Side implements State.Side {
     spikes: number;
     steelsurge: boolean;
+    vinelash: boolean;
+    wildfire: boolean;
+    cannonade: boolean;
+    volcalith: boolean;
     isSR: boolean;
     isReflect: boolean;
     isLightScreen: boolean;
@@ -34,22 +34,8 @@ export declare class Side {
     isFriendGuard: boolean;
     isAuroraVeil: boolean;
     isBattery: boolean;
-    isSwitching: boolean;
-    constructor(side: {
-        spikes?: number;
-        steelsurge?: boolean;
-        isSR?: boolean;
-        isReflect?: boolean;
-        isLightScreen?: boolean;
-        isProtected?: boolean;
-        isSeeded?: boolean;
-        isForesight?: boolean;
-        isTailwind?: boolean;
-        isHelpingHand?: boolean;
-        isFriendGuard?: boolean;
-        isAuroraVeil?: boolean;
-        isBattery?: boolean;
-        isSwitching?: boolean;
-    });
+    isPowerSpot: boolean;
+    isSwitching?: 'out' | 'in';
+    constructor(side?: State.Side);
     clone(): Side;
 }

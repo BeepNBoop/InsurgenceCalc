@@ -369,6 +369,17 @@ function calculateBWXY(gen, attacker, defender, move, field) {
         desc.moveBP = basePower / 2;
         desc.weather = field.weather;
     }
+    else if (move.named('Solar Beam') && field.hasWeather('Darkness')) {
+        bpMods.push(1228.8);
+        desc.moveBP = basePower / 3.3333333;
+        desc.weather = field.weather;
+    }
+    else if (move.named('Surf') &&
+        field.hasWeather('Darkness')) {
+        bpMods.push(6144);
+        desc.moveBP = basePower * 1.5;
+        desc.weather = field.weather;
+    }
     else if (gen.num > 5 && move.named('Knock Off') && !resistedKnockOffDamage) {
         bpMods.push(6144);
         desc.moveBP = basePower * 1.5;
@@ -500,6 +511,12 @@ function calculateBWXY(gen, attacker, defender, move, field) {
     else if ((attacker.hasAbility('Solar Power') &&
         field.hasWeather('Sun', 'Harsh Sunshine') &&
         move.category === 'Special') ||
+        (attacker.hasAbility('Absolution') &&
+            field.hasWeather('Darkness') &&
+            move.category === 'Special') ||
+        (attacker.hasAbility('Supercell') &&
+            field.hasWeather('Darkness', 'Rain', 'Heavy Rain') &&
+            move.category === 'Special') ||
         (attacker.hasAbility('Flower Gift') &&
             field.hasWeather('Sun', 'Harsh Sunshine') &&
             move.category === 'Physical')) {
@@ -650,11 +667,11 @@ function calculateBWXY(gen, attacker, defender, move, field) {
     desc.isBurned = applyBurn;
     var finalMods = [];
     if (field.defenderSide.isReflect && move.category === 'Physical' && !isCritical) {
-        finalMods.push(field.gameType !== 'Singles' ? (gen.num > 5 ? 2732 : 2703) : 2048);
+        finalMods.push(field.gameType !== 'Singles' ? (gen.num > 5 ? 2732 : 2703) : (field.hasWeather('Darkness') ? 1638.4 : 2048));
         desc.isReflect = true;
     }
     else if (field.defenderSide.isLightScreen && move.category === 'Special' && !isCritical) {
-        finalMods.push(field.gameType !== 'Singles' ? (gen.num > 5 ? 2732 : 2703) : 2048);
+        finalMods.push(field.gameType !== 'Singles' ? (gen.num > 5 ? 2732 : 2703) : (field.hasWeather('Darkness') ? 1638.4 : 2048));
         desc.isLightScreen = true;
     }
     if (defender.hasAbility('Multiscale') && defender.curHP() === defender.maxHP() &&

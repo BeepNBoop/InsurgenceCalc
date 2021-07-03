@@ -726,20 +726,16 @@ function calculateBPModsSMSS(gen, attacker, defender, move, field, desc, basePow
     else if (move.named('Solar Beam', 'Solar Blade') &&
         field.hasWeather('Darkness')) {
         bpMods.push(1228.8);
-        desc.moveBP = basePower / 3.3333;
+        desc.moveBP = basePower / 3.333333;
         desc.weather = field.weather;
     }
     else if (move.named('Surf') &&
         field.hasWeather('Darkness')) {
-        bpMods.push(1228.8);
-        desc.moveBP = basePower / 3.3333;
+        bpMods.push(6144);
+        desc.moveBP = basePower * 1.5;
         desc.weather = field.weather;
     }
     else if (move.named('Knock Off') && !resistedKnockOffDamage) {
-        bpMods.push(6144);
-        desc.moveBP = basePower * 1.5;
-    }
-    else if (move.named('Surf') && field.hasWeather('Darkness')) {
         bpMods.push(6144);
         desc.moveBP = basePower * 1.5;
     }
@@ -832,6 +828,12 @@ function calculateAtModsSMSS(gen, attacker, defender, move, field, desc) {
     else if ((attacker.hasAbility('Solar Power') &&
         field.hasWeather('Sun', 'Harsh Sunshine') &&
         move.category === 'Special') ||
+        (attacker.hasAbility('Absolution') &&
+            field.hasWeather('Darkness') &&
+            move.category === 'Special') ||
+        (attacker.hasAbility('Supercell') &&
+            field.hasWeather('Darkness', 'Rain', 'Heavy Rain') &&
+            move.category === 'Special') ||
         (attacker.hasAbility('Flower Gift') &&
             field.hasWeather('Sun', 'Harsh Sunshine') &&
             move.category === 'Physical') ||
@@ -975,23 +977,23 @@ function calculateFinalModsSMSS(gen, attacker, defender, move, field, desc, isCr
     if (isCritical === void 0) { isCritical = false; }
     var finalMods = [];
     if (field.defenderSide.isReflect && move.category === 'Physical' &&
-        !isCritical && !field.defenderSide.isAuroraVeil) {
-        finalMods.push(field.gameType !== 'Singles' ? 2732 : 2048);
-        desc.isReflect = true;
-    }
-    else if (field.defenderSide.isReflect && move.category === 'Physical' &&
         !isCritical && !field.defenderSide.isAuroraVeil && field.hasWeather('Darkness')) {
         finalMods.push(field.gameType !== 'Singles' ? 2732 : 1638.4);
         desc.isReflect = true;
     }
-    else if (field.defenderSide.isLightScreen && move.category === 'Special' &&
+    else if (field.defenderSide.isReflect && move.category === 'Physical' &&
         !isCritical && !field.defenderSide.isAuroraVeil) {
         finalMods.push(field.gameType !== 'Singles' ? 2732 : 2048);
-        desc.isLightScreen = true;
+        desc.isReflect = true;
     }
     else if (field.defenderSide.isLightScreen && move.category === 'Special' &&
         !isCritical && !field.defenderSide.isAuroraVeil && field.hasWeather('Darkness')) {
-        finalMods.push(field.gameType !== 'Singles' ? 2732 : 2170.88);
+        finalMods.push(field.gameType !== 'Singles' ? 2732 : 1638.4);
+        desc.isLightScreen = true;
+    }
+    else if (field.defenderSide.isLightScreen && move.category === 'Special' &&
+        !isCritical && !field.defenderSide.isAuroraVeil) {
+        finalMods.push(field.gameType !== 'Singles' ? 2732 : 2048);
         desc.isLightScreen = true;
     }
     if (field.defenderSide.isAuroraVeil && !isCritical) {

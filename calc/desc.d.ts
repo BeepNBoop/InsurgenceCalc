@@ -1,7 +1,8 @@
-import { Generation, TypeName } from './data/interface';
-import { Field, Terrain, Weather } from './field';
+import { Generation, Weather, Terrain, TypeName } from './data/interface';
+import { Field } from './field';
 import { Move } from './move';
 import { Pokemon } from './pokemon';
+import { Damage } from './result';
 export interface RawDesc {
     HPEVs?: string;
     attackBoost?: number;
@@ -24,7 +25,8 @@ export interface RawDesc {
     isProtected?: boolean;
     isReflect?: boolean;
     isBattery?: boolean;
-    isSwitching?: boolean;
+    isPowerSpot?: boolean;
+    isSwitching?: 'out' | 'in';
     moveBP?: number;
     moveName: string;
     moveTurns?: string;
@@ -34,17 +36,17 @@ export interface RawDesc {
     weather?: Weather;
     isDefenderDynamaxed?: boolean;
 }
-export declare function display(gen: Generation, attacker: Pokemon, defender: Pokemon, move: Move, field: Field, damage: number[], rawDesc: RawDesc, notation?: string, err?: boolean): string;
-export declare function displayMove(gen: Generation, attacker: Pokemon, defender: Pokemon, move: Move, damage: number[], notation?: string): string;
-export declare function getRecovery(gen: Generation, attacker: Pokemon, defender: Pokemon, move: Move, damage: number[], notation?: string): {
-    recovery: number[];
+export declare function display(gen: Generation, attacker: Pokemon, defender: Pokemon, move: Move, field: Field, damage: Damage, rawDesc: RawDesc, notation?: string, err?: boolean): string;
+export declare function displayMove(gen: Generation, attacker: Pokemon, defender: Pokemon, move: Move, damage: Damage, notation?: string): string;
+export declare function getRecovery(gen: Generation, attacker: Pokemon, defender: Pokemon, move: Move, damage: Damage, notation?: string): {
+    recovery: [number, number];
     text: string;
 };
-export declare function getRecoil(gen: Generation, attacker: Pokemon, defender: Pokemon, move: Move, damage: number[], notation?: string): {
+export declare function getRecoil(gen: Generation, attacker: Pokemon, defender: Pokemon, move: Move, damage: Damage, notation?: string): {
     recoil: number | [number, number];
     text: string;
 };
-export declare function getKOChance(gen: Generation, attacker: Pokemon, defender: Pokemon, move: Move, field: Field, damage: number[], err?: boolean): {
+export declare function getKOChance(gen: Generation, attacker: Pokemon, defender: Pokemon, move: Move, field: Field, damage: Damage, err?: boolean): {
     chance: number;
     n: number;
     text: string;

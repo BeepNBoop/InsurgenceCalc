@@ -26,7 +26,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+var e_1, _a, e_2, _b;
 exports.__esModule = true;
+
 var util_1 = require("../util");
 var RBY = [];
 var GSC = [];
@@ -193,7 +206,6 @@ var BW = DPP.concat([
     'Sand Rush',
     'Sap Sipper',
     'Sheer Force',
-    'Storm Drain',
     'Telepathy',
     'Teravolt',
     'Toxic Boost',
@@ -204,88 +216,75 @@ var BW = DPP.concat([
     'Wonder Skin',
     'Zen Mode',
 ]);
-var XY_BASE = BW.concat([
+var XY = BW.concat([
+    'Absolution',
     'Aerilate',
-    'Aura Break',
+    'Amplifier',
+    'Ancient Presence',
     'Aroma Veil',
+    'Athenian',
+    'Aura Break',
+    'Blaze Boost',
     'Bulletproof',
+    'Castle Moat',
     'Cheek Pouch',
+    'Chlorofury',
     'Competitive',
     'Dark Aura',
     'Delta Stream',
     'Desolate Land',
+    'Ethereal Shroud',
+    'Event Horizon',
     'Fairy Aura',
     'Flower Veil',
+    'Foundry',
     'Fur Coat',
     'Gale Wings',
+    'Glitch',
     'Gooey',
     'Grass Pelt',
+    'Heliophobia',
+    'Hubris',
+    'Ice Cleats',
+    'Intoxicate',
+    'Irrelephant',
+    'Lernean',
+    'Noctem',
     'Magician',
     'Mega Launcher',
+    'Omnitype',
     'Parental Bond',
+    'Pendulum',
+    'Periodic Orbit',
+    'Phototroph',
     'Pixilate',
     'Primordial Sea',
+    'Prism Guard',
     'Protean',
+    'Protean Maxima',
+    'Psycho Call',
     'Refrigerate',
+    'Regurgitation',
+    'Shadow Call',
+    'Shadow Dance',
+    'Shadow Synergy',
+    'Sleet',
+    'Spectral Jaws',
+    'Speed Swap',
+    'Spirit Call',
     'Stance Change',
     'Strong Jaw',
+    'Supercell',
     'Sweet Veil',
+    'Synthetic Alloy',
     'Symbiosis',
     'Tough Claws',
-]);
-var XY = XY_BASE.concat([
-	'Absolution',
-	'Ancient Presence',
-    'Amplifier',
-	'Athenian',
-	'Blaze Boost',
-	'Castle Moat',
-	'Chlorofury',
-	'Ethereal Shroud',
-	'Event Horizon',
-	'Foundry',
-	'Glitch',
-	'Heliophobia',
-	'Hubris',
-	'Ice Cleats',
-	'Intoxicate',
-	'Irrelephant',
-	'Lernean',
-	'Lernean (5 heads)',
-	'Lernean (6 heads)',
-	'Lernean (7 heads)',
-	'Lernean (8 heads)',
-	'Lernean (9 heads)',
-	'Noctem',
-	'Omnitype',
-	'Pendulum',
-	'Pendulum (1 stack)',
-	'Pendulum (2 stacks)',
-	'Pendulum (3 stacks)',
-	'Pendulum (4 stacks)',
-	'Pendulum (5 stacks)',
-	'Periodic Orbit',
-	'Phototroph',
-	'Prism Guard',
-	'Protean Maxima',
-	'Psycho Call',
-	'Regurgitation',
-	'Shadow Call',
-	'Shadow Dance',
-	'Shadow Synergy',
-	'Sleet',
-	'Spectral Jaws',
-	'Speed Swap',
-	'Spirit Call',
-	'Supercell',
-	'Unleafed',
-	'Vampiric',
-	'Vaporization',
-	'Venomous',
+    'Unleafed',
+    'Vampiric',
+    'Vaporization',
+    'Venomous',
     'Wind Force',
     'Winter Joy',
-	'Winter Joy (Summer)',
-	'Winter Joy (Winter)',
 ]);
 var SM = XY.concat([
     'Battery',
@@ -332,10 +331,16 @@ var SM = XY.concat([
     'Wimp Out',
 ]);
 var SS = SM.concat([
+    'As One (Glastrier)',
+    'As One (Spectrier)',
     'Ball Fetch',
+    'Chilling Neigh',
     'Cotton Down',
+    'Curious Medicine',
     'Dauntless Shield',
+    'Dragon\'s Maw',
     'Gorilla Tactics',
+    'Grim Neigh',
     'Gulp Missile',
     'Hunger Switch',
     'Ice Face',
@@ -350,12 +355,15 @@ var SS = SM.concat([
     'Power Spot',
     'Propeller Tail',
     'Punk Rock',
+    'Quick Draw',
     'Ripen',
     'Sand Spit',
     'Screen Cleaner',
     'Stalwart',
     'Steam Engine',
     'Steely Spirit',
+    'Transistor',
+    'Unseen Fist',
     'Wandering Spirit',
 ]);
 exports.ABILITIES = [[], RBY, GSC, ADV, DPP, BW, XY, SM, SS];
@@ -402,14 +410,32 @@ var Ability = (function () {
     return Ability;
 }());
 var ABILITIES_BY_ID = [];
-for (var _i = 0, ABILITIES_1 = exports.ABILITIES; _i < ABILITIES_1.length; _i++) {
-    var abilities = ABILITIES_1[_i];
-    var map = {};
-    for (var _a = 0, abilities_1 = abilities; _a < abilities_1.length; _a++) {
-        var ability = abilities_1[_a];
-        var a = new Ability(ability);
-        map[a.id] = a;
+try {
+    for (var ABILITIES_1 = __values(exports.ABILITIES), ABILITIES_1_1 = ABILITIES_1.next(); !ABILITIES_1_1.done; ABILITIES_1_1 = ABILITIES_1.next()) {
+        var abilities = ABILITIES_1_1.value;
+        var map = {};
+        try {
+            for (var abilities_1 = (e_2 = void 0, __values(abilities)), abilities_1_1 = abilities_1.next(); !abilities_1_1.done; abilities_1_1 = abilities_1.next()) {
+                var ability = abilities_1_1.value;
+                var a = new Ability(ability);
+                map[a.id] = a;
+            }
+        }
+        catch (e_2_1) { e_2 = { error: e_2_1 }; }
+        finally {
+            try {
+                if (abilities_1_1 && !abilities_1_1.done && (_b = abilities_1["return"])) _b.call(abilities_1);
+            }
+            finally { if (e_2) throw e_2.error; }
+        }
+        ABILITIES_BY_ID.push(map);
     }
-    ABILITIES_BY_ID.push(map);
+}
+catch (e_1_1) { e_1 = { error: e_1_1 }; }
+finally {
+    try {
+        if (ABILITIES_1_1 && !ABILITIES_1_1.done && (_a = ABILITIES_1["return"])) _a.call(ABILITIES_1);
+    }
+    finally { if (e_1) throw e_1.error; }
 }
 //# sourceMappingURL=abilities.js.map

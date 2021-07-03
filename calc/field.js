@@ -75,6 +75,7 @@ var Side = (function () {
         this.cannonade = !!side.cannonade;
         this.volcalith = !!side.volcalith;
         this.isSR = !!side.isSR;
+        this.isF = !!side.isF;
         this.isReflect = !!side.isReflect;
         this.isLightScreen = !!side.isLightScreen;
         this.isProtected = !!side.isProtected;

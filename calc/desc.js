@@ -16,7 +16,7 @@ var __read = (this && this.__read) || function (o, n) {
     return ar;
 };
 exports.__esModule = true;
-exports.getKOChance = exports.getRecoil = exports.getRecovery = exports.displayMove = exports.display = void 0;
+
 var result_1 = require("./result");
 var util_1 = require("./util");
 var util_2 = require("./mechanics/util");
@@ -309,13 +309,6 @@ function getHazards(gen, defender, defenderSide) {
             (defender.types[1] ? rockType.effectiveness[defender.types[1]] : 1);
         damage += Math.floor((effectiveness * defender.maxHP()) / 8);
         texts.push('Stealth Rock');
-    }
-    if (defenderSide.isF && !defender.hasAbility('Magic Guard', 'Mountaineer')) {
-        var fireType = gen.types.get('fire');
-        var effectiveness = fireType.effectiveness[defender.types[0]] *
-            (defender.types[1] ? fireType.effectiveness[defender.types[1]] : 1);
-        damage += Math.floor((effectiveness * defender.maxHP()) / 8);
-        texts.push('Foundry');
     }
     if (defenderSide.steelsurge && !defender.hasAbility('Magic Guard', 'Mountaineer')) {
         var steelType = gen.types.get('steel');

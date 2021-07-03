@@ -40,7 +40,6 @@ export declare namespace State {
         defenderSide: Side;
     }
     interface Side {
-        isF?: boolean;
         spikes?: number;
         steelsurge?: boolean;
         vinelash?: boolean;

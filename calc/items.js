@@ -1,6 +1,5 @@
 "use strict";
 exports.__esModule = true;
-
 var util_1 = require("./util");
 exports.SEED_BOOSTED_STAT = {
     'Electric Seed': 'def',
@@ -245,7 +244,7 @@ var FLING_30 = new Set([
     'Charcoal',
     'Deep Sea Scale',
     'Flame Orb',
-    'King\'s Rock',
+    "King's Rock",
     'Life Orb',
     'Light Ball',
     'Light Clay',
@@ -331,7 +330,7 @@ var FLING_10 = new Set([
     'Wide Lens',
     'Wise Glasses',
     'Zoom Lens',
-    'Silver Powder',
+    'SilverPowder',
     'Power Herb',
     'TR00',
     'TR07',
@@ -369,17 +368,17 @@ var FLING_10 = new Set([
 function getFlingPower(item) {
     if (!item)
         return 0;
-    if (['Iron Ball', 'TR43', 'TR71'].includes(item))
+    if (['Iron Ball', 'TR43', 'TR71'].indexOf(item) !== -1)
         return 130;
     if (FLING_120.has(item))
         return 85;
-    if (['TR03', 'TR06', 'TR09', 'TR15', 'TR89'].includes(item))
+    if (['TR03', 'TR06', 'TR09', 'TR15', 'TR89'].indexOf(item) !== -1)
         return 110;
     if (FLING_100.has(item))
         return 100;
-    if (['TR36', 'TR78', 'TR81', 'TR94'].includes(item))
+    if (['TR36', 'TR78', 'TR81', 'TR94'].indexOf(item) !== -1)
         return 95;
-    if (item.includes('Plate') || FLING_90.has(item))
+    if (item.indexOf('Plate') !== -1 || FLING_90.has(item))
         return 90;
     if (FLING_85.has(item))
         return 85;
@@ -389,15 +388,15 @@ function getFlingPower(item) {
         return 70;
     if (FLING_60.has(item))
         return 60;
-    if (['Eject Pack', 'Sharp Beak', 'Dubious Disc'].includes(item))
+    if (['Eject Pack', 'Sharp Beak', 'Dubious Disc'].indexOf(item) !== -1)
         return 50;
-    if (['Icy Rock', 'Eviolite', 'Lucky Punch'].includes(item))
+    if (['Icy Rock', 'Eviolite', 'Lucky Punch'].indexOf(item) !== -1)
         return 40;
     if (FLING_30.has(item))
         return 30;
     if (item === 'TR82')
         return 20;
-    if (item.includes('Berry') || FLING_10.has(item))
+    if (item.indexOf('Berry') !== -1 || FLING_10.has(item))
         return 10;
     return 0;
 }
@@ -424,7 +423,7 @@ function getTechnoBlast(item) {
 }
 exports.getTechnoBlast = getTechnoBlast;
 function getMultiAttack(item) {
-    if (item.includes('Memory')) {
+    if (item.indexOf('Memory') !== -1) {
         return item.substring(0, item.indexOf(' '));
     }
     return undefined;

@@ -1,9 +1,14 @@
-import { Natures, Generation, TypeName, StatName, StatsTable } from './data/interface';
-export declare const STATS: Array<Array<StatName | 'spc'> | StatName[]>;
-declare type HPTypeName = Exclude<TypeName, 'Normal' | 'Fairy' | '???'>;
+import { Natures, Generation, StatName } from './data/interface';
+export declare type Stat = StatName | 'spc';
+export declare type StatsTable<T = number> = {
+    [stat in StatName]: T;
+} & {
+    spc?: T;
+};
+export declare const STATS: Stat[][];
 export declare const Stats: {
-    displayStat(stat: StatName | 'spc'): "HP" | "Atk" | "Def" | "SpA" | "SpD" | "Spe" | "Spc";
-    shortForm(stat: StatName | 'spc'): "hp" | "at" | "df" | "sa" | "sd" | "sp" | "sl";
+    displayStat(stat: Stat): "HP" | "Atk" | "Def" | "SpA" | "SpD" | "Spe" | "Spc";
+    shortForm(stat: Stat): "hp" | "at" | "df" | "sa" | "sd" | "sp" | "sl";
     getHPDV(ivs: {
         atk: number;
         def: number;
@@ -12,15 +17,8 @@ export declare const Stats: {
     }): number;
     IVToDV(iv: number): number;
     DVToIV(dv: number): number;
-    DVsToIVs(dvs: Readonly<Partial<StatsTable>>): Partial<StatsTable<number>>;
-    calcStat(gen: Generation, stat: StatName, base: number, iv: number, ev: number, level: number, nature?: string | undefined): number;
-    calcStatADV(natures: Natures, stat: StatName, base: number, iv: number, ev: number, level: number, nature?: string | undefined): number;
-    calcStatRBY(stat: StatName, base: number, iv: number, level: number): number;
-    calcStatRBYFromDV(stat: StatName, base: number, dv: number, level: number): number;
-    getHiddenPowerIVs(gen: Generation, hpType: HPTypeName): Partial<StatsTable<number>> | undefined;
-    getHiddenPower(gen: Generation, ivs: StatsTable): {
-        type: TypeName;
-        power: number;
-    };
+    calcStat(gen: Generation, stat: Stat, base: number, iv: number, ev: number, level: number, nature?: string | undefined): number;
+    calcStatADV(natures: Natures, stat: Stat, base: number, iv: number, ev: number, level: number, nature?: string | undefined): number;
+    calcStatRBY(stat: Stat, base: number, iv: number, level: number): number;
+    calcStatRBYFromDV(stat: Stat, base: number, dv: number, level: number): number;
 };
-export {};

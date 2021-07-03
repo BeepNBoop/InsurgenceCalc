@@ -1,8 +1,7 @@
 import * as I from './data/interface';
-import { State } from './state';
-export declare class Move implements State.Move {
+export declare class Move {
     gen: I.Generation;
-    name: I.MoveName;
+    name: string;
     originalName: string;
     ability?: I.AbilityName;
     item?: I.ItemName;
@@ -11,35 +10,45 @@ export declare class Move implements State.Move {
     useMax?: boolean;
     overrides?: Partial<I.Move>;
     hits: number;
-    timesUsed?: number;
-    timesUsedWithMetronome?: number;
+    usedTimes?: number;
+    metronomeCount?: number;
     bp: number;
     type: I.TypeName;
     category: I.MoveCategory;
-    flags: I.MoveFlags;
-    secondaries: any;
-    target: I.MoveTarget;
-    recoil?: [number, number];
-    hasCrashDamage: boolean;
-    mindBlownRecoil: boolean;
-    struggleRecoil: boolean;
+    hasSecondaryEffect: boolean;
+    isSpread: boolean | 'allAdjacent';
+    makesContact: boolean;
+    hasRecoil?: I.MoveRecoil;
     isCrit: boolean;
-    drain?: [number, number];
-    priority: number;
+    givesHealth: boolean;
+    percentHealed?: number;
+    ignoresBurn: boolean;
+    isPunch: boolean;
+    isBite: boolean;
+    isBullet: boolean;
+    isSound: boolean;
+    isPulse: boolean;
+    hasPriority: boolean;
     dropsStats?: number;
-    ignoreDefensive: boolean;
-    defensiveCategory: I.MoveCategory;
-    breaksProtect: boolean;
+    ignoresDefenseBoosts: boolean;
+    dealsPhysicalDamage: boolean;
+    bypassesProtect: boolean;
     isZ: boolean;
     isMax: boolean;
-    constructor(gen: I.Generation, name: string, options?: Partial<State.Move> & {
+    usesHighestAttackStat: boolean;
+    constructor(gen: I.Generation, name: string, options?: {
         ability?: I.AbilityName;
         item?: I.ItemName;
         species?: I.SpeciesName;
+        useZ?: boolean;
+        useMax?: boolean;
+        isCrit?: boolean;
+        hits?: number;
+        usedTimes?: number;
+        metronomeCount?: number;
+        overrides?: Partial<I.Move>;
     });
-    named(...names: string[]): boolean;
-    hasType(...types: Array<(I.TypeName | undefined)>): boolean;
     clone(): Move;
 }
 export declare function getZMoveName(moveName: string, moveType: I.TypeName, item?: string): string;
-export declare function getMaxMoveName(moveType: I.TypeName, pokemonSpecies?: string, isStatus?: boolean, pokemonAbility?: string): string;
+export declare function getMaxMoveName(moveType: I.TypeName, pokemonSpecies?: string, isStatus?: boolean): string;

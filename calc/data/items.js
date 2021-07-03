@@ -26,41 +26,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __read = (this && this.__read) || function (o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
 };
-var __spreadArray = (this && this.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
-};
-var __values = (this && this.__values) || function(o) {
-    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
-    if (m) return m.call(o);
-    if (o && typeof o.length === "number") return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
-};
-var e_1, _a, e_2, _b;
 exports.__esModule = true;
-
 var util_1 = require("../util");
 var RBY = [];
 var GSC = [
@@ -85,7 +58,7 @@ var GSC = [
     'Hard Stone',
     'Heavy Ball',
     'Ice Berry',
-    'King\'s Rock',
+    "King's Rock",
     'Leaf Stone',
     'Leftovers',
     'Level Ball',
@@ -238,6 +211,7 @@ var DPP = ADV.concat([
     'Dusk Stone',
     'Earth Plate',
     'Electirizer',
+    'Enigma Berry',
     'Expert Belt',
     'Fist Plate',
     'Flame Orb',
@@ -261,6 +235,7 @@ var DPP = ADV.concat([
     'Life Orb',
     'Light Clay',
     'Lustrous Orb',
+    'Macho Brace',
     'Magmarizer',
     'Meadow Plate',
     'Metronome',
@@ -397,9 +372,64 @@ exports.MEGA_STONES = {
     Steelixite: 'Steelix',
     Swampertite: 'Swampert',
     Tyranitarite: 'Tyranitar',
-    Venusaurite: 'Venusaur'
+    Venusaurite: 'Venusaur',
+
+    //Insurgence
+    Cacturnite: 'Cacturne',
+    Chatotite: 'Chatot',
+    Crawdite: 'Crawdaunt',
+    Cryogonite: 'Cryogonal',
+    Donphanite: 'Donphan',
+    Eevite: 'Eevee',
+    Etigirafarigite: 'Girafarig',
+    Feraligatite: 'Feraligatr',
+    Flygonite: 'Flygon',
+    Froslassite: 'Froslass',
+    Gothitite: 'Gothitelle',
+    Haxorite: 'Haxorus',
+    Hydreigonite: 'Hydreigon',
+    Jirachite: 'Jirachi',
+    Magcargonite: 'Magcargo',
+    Marowite: 'Marowak',
+    Meganiumite: 'Meganium',
+    Milotite: 'Milotic',
+    Miltankite: 'Miltank',
+    Politoedite: 'Politoed',
+    Poliwrathite: 'Poliwrath',
+    Reuniclite: 'Reuniclus',
+    Shiftrite: 'Shiftry',
+    Spiritombite: 'Spiritomb',
+    'Steelixite (Fire)': 'Steelix',
+    Stunfiskite: 'Stunfisk',
+    Sudowoodite: 'Sudowoodo',
+    Sunflorite: 'Sunflora',
+    Typhlosionite: 'Typhlosion',
+    Zebstrikite: 'Zebstrika',
+    Zoronite: 'Zoroak',
+
+    'Delta Bisharpite': 'Delta Bisharp',
+    'Delta Blastoisinite': 'Delta Blastoise',
+    'Delta Cameruptite': 'Delta Camerupt',
+    'Delta Charizardite': 'Delta Charizard',
+    'Delta Froslassite': 'Delta Froslass',
+    'Delta Galladite': 'Delta Gallade',
+    'Delta Gardevoirite': 'Delta Gardevoir',
+    'Delta Etigirafarigite': 'Delta Girafarig',
+    'Delta Glalitite': 'Delta Glalie',
+    'Delta Lopunnite': 'Delta Lopunny',
+    'Delta Lucarionite': 'Delta Lucario',
+    'Delta Mawilite': 'Delta Mawile',
+    'Delta Metagrossite (Spider)': 'Delta Metagross-Spider',
+    'Delta Metagrossite (Ruin)': 'Delta Metagross-Ruin',
+    'Delta Milotite': 'Delta Milotic',
+    'Delta Pidgeotite': 'Delta Pidgeot',
+    'Delta Sablenite': 'Delta Sableye',
+    'Delta Scizorite': 'Delta Scizor',
+    'Delta Sunflorite': 'Delta Sunflora',
+    'Delta Typhlosionite': 'Delta Typhlosion',
+    'Delta Venusaurite': 'Delta Venusaur'
 };
-var XY = BW.concat(__spreadArray(__spreadArray([], __read(Object.keys(exports.MEGA_STONES))), [
+var XY = BW.concat(__spreadArrays(Object.keys(exports.MEGA_STONES), [
     'Assault Vest',
     'Blue Orb',
     'Fairy Gem',
@@ -408,6 +438,7 @@ var XY = BW.concat(__spreadArray(__spreadArray([], __read(Object.keys(exports.ME
     'Luminous Moss',
     'Maranga Berry',
     'Pixie Plate',
+    'Power Herb',
     'Red Orb',
     'Roseli Berry',
     'Sachet',
@@ -416,6 +447,17 @@ var XY = BW.concat(__spreadArray(__spreadArray([], __read(Object.keys(exports.ME
     'Snowball',
     'Weakness Policy',
     'Whipped Dream',
+
+    //Insurgence
+    'D. Volcarona Armor',
+    'Flygon Armor',
+    'Leavanny Armor',
+    'Mewtwo Armor',
+    'Tyranitar Armor',
+    'Zekrom Armor',
+
+    'Dark Rock',
+    'Trick Rock'
 ]).sort());
 var SM = XY.filter(function (i) { return i !== 'Old Amber'; }).concat([
     'Adrenaline Orb',
@@ -424,12 +466,9 @@ var SM = XY.filter(function (i) { return i !== 'Old Amber'; }).concat([
     'Bottle Cap',
     'Bug Memory',
     'Buginium Z',
-    'Crystal Piece',
     'Dark Memory',
-    'Dark Rock',
     'Darkinium Z',
     'Decidium Z',
-    'Delta Volcarona Armor',
     'Dragon Memory',
     'Dragonium Z',
     'Eevium Z',
@@ -441,7 +480,6 @@ var SM = XY.filter(function (i) { return i !== 'Old Amber'; }).concat([
     'Fighting Memory',
     'Fightinium Z',
     'Fire Memory',
-    'Flygon Armor',
     'Firium Z',
     'Flying Memory',
     'Flyinium Z',
@@ -458,12 +496,10 @@ var SM = XY.filter(function (i) { return i !== 'Old Amber'; }).concat([
     'Icium Z',
     'Incinium Z',
     'Kommonium Z',
-    'Leavanny Armor',
     'Lunalium Z',
     'Lycanium Z',
     'Marshadium Z',
     'Mewnium Z',
-    'Mewtwo Armor',
     'Mimikium Z',
     'Misty Seed',
     'Normalium Z',
@@ -484,12 +520,9 @@ var SM = XY.filter(function (i) { return i !== 'Old Amber'; }).concat([
     'Steelium Z',
     'Tapunium Z',
     'Terrain Extender',
-    'Trick Rock',
-    'Tyranitar Armor',
     'Ultranecrozium Z',
     'Water Memory',
     'Waterium Z',
-    'Zekrom Armor',
 ]);
 var SS = SM.concat([
     'Berry Sweet',
@@ -503,8 +536,6 @@ var SS = SM.concat([
     'Fossilized Dino',
     'Fossilized Drake',
     'Fossilized Fish',
-    'Galarica Cuff',
-    'Galarica Wreath',
     'Heavy-Duty Boots',
     'Leek',
     'Love Sweet',
@@ -522,7 +553,7 @@ for (var i = 0; i < 100; i++) {
     SS.push("TR" + (i < 10 ? "0" + i : i));
 }
 SS.push('Utility Umbrella');
-SS.push.apply(SS, __spreadArray(__spreadArray([], __read(GSC_ONLY)), ['Old Amber']));
+SS.push.apply(SS, __spreadArrays(GSC_ONLY, ['Old Amber']));
 var BERRIES = {
     'Aguav Berry': { t: 'Dragon', p: 80 },
     'Apicot Berry': { t: 'Ground', p: 100 },
@@ -656,33 +687,15 @@ var Item = (function () {
 }());
 var ITEMS_BY_ID = [];
 var gen = 0;
-try {
-    for (var ITEMS_1 = __values(exports.ITEMS), ITEMS_1_1 = ITEMS_1.next(); !ITEMS_1_1.done; ITEMS_1_1 = ITEMS_1.next()) {
-        var items = ITEMS_1_1.value;
-        var map = {};
-        try {
-            for (var items_1 = (e_2 = void 0, __values(items)), items_1_1 = items_1.next(); !items_1_1.done; items_1_1 = items_1.next()) {
-                var item = items_1_1.value;
-                var i = new Item(item, gen);
-                map[i.id] = i;
-            }
-        }
-        catch (e_2_1) { e_2 = { error: e_2_1 }; }
-        finally {
-            try {
-                if (items_1_1 && !items_1_1.done && (_b = items_1["return"])) _b.call(items_1);
-            }
-            finally { if (e_2) throw e_2.error; }
-        }
-        ITEMS_BY_ID.push(map);
-        gen++;
+for (var _i = 0, ITEMS_1 = exports.ITEMS; _i < ITEMS_1.length; _i++) {
+    var items = ITEMS_1[_i];
+    var map = {};
+    for (var _a = 0, items_1 = items; _a < items_1.length; _a++) {
+        var item = items_1[_a];
+        var i = new Item(item, gen);
+        map[i.id] = i;
     }
-}
-catch (e_1_1) { e_1 = { error: e_1_1 }; }
-finally {
-    try {
-        if (ITEMS_1_1 && !ITEMS_1_1.done && (_a = ITEMS_1["return"])) _a.call(ITEMS_1);
-    }
-    finally { if (e_1) throw e_1.error; }
+    ITEMS_BY_ID.push(map);
+    gen++;
 }
 //# sourceMappingURL=items.js.map

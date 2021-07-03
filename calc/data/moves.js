@@ -1761,12 +1761,95 @@ var XY_PATCH = {
     'Water Pulse': { isPulse: true },
     'Weather Ball': { isBullet: true },
     'Zap Cannon': { isBullet: true },
+    'Achilles Heel': {
+        bp: 45,
+        type: 'Normal',
+        category: 'Physical',
+        makesContact: true
+    },
+    'Ancient Roar': {
+        bp: 80,
+        type: 'Rock',
+        category: 'Special',
+        isSound: true
+    },
+    'Corrode': {
+        bp: 70,
+        type: 'Poison',
+        category: 'Special'
+    },
+    'Crystal Rush': {
+        bp: 45,
+        type: 'Crystal',
+        category: 'Physical',
+        makesContact: true,
+        priority: 1
+    },
+    'Custom Move': { bp: 70, type: 'Normal',
+        category: 'Physical', makesContact: true },
+    'Custom Move Bug': { bp: 70, type: 'Bug',
+        category: 'Physical', makesContact: true },
+    'Custom Move Dark': { bp: 70, type: 'Dark',
+        category: 'Physical', makesContact: true },
+    'Custom Move Dragon': { bp: 70, type: 'Dragon',
+        category: 'Physical', makesContact: true },
+    'Custom Move Electric': { bp: 70, type: 'Electric',
+        category: 'Physical', makesContact: true },
+    'Custom Move Fairy': { bp: 70, type: 'Fairy',
+        category: 'Physical', makesContact: true },
+    'Custom Move Fighting': { bp: 70, type: 'Fighting',
+        category: 'Physical', makesContact: true },
+    'Custom Move Fire': { bp: 70, type: 'Fire',
+        category: 'Physical', makesContact: true },
+    'Custom Move Flying': { bp: 70, type: 'Flying',
+        category: 'Physical', makesContact: true },
+    'Custom Move Ghost': { bp: 70, type: 'Ghost',
+        category: 'Physical', makesContact: true },
+    'Custom Move Grass': { bp: 70, type: 'Grass',
+        category: 'Physical', makesContact: true },
+    'Custom Move Ground': { bp: 70, type: 'Ground',
+        category: 'Physical', makesContact: true },
+    'Custom Move Ice': { bp: 70, type: 'Ice',
+        category: 'Physical', makesContact: true },
+    'Custom Move Poison': { bp: 70, type: 'Poison',
+        category: 'Physical', makesContact: true },
+    'Custom Move Psychic': { bp: 70, type: 'Psychic',
+        category: 'Physical', makesContact: true },
+    'Custom Move Rock': { bp: 70, type: 'Rock',
+        category: 'Physical', makesContact: true },
+    'Custom Move Steel': { bp: 70, type: 'Steel',
+        category: 'Physical', makesContact: true },
+    'Custom Move Water': { bp: 70, type: 'Water',
+        category: 'Physical', makesContact: true },
+    'Dark Matter': {
+        bp: 150,
+        type: 'Dark',
+        category: 'Special'
+    },
     'Diamond Storm': {
         bp: 100,
         type: 'Rock',
         target: 'allAdjacentFoes',
         category: 'Physical',
         secondaries: true
+    },
+    'Draco Jet': {
+        bp: 40,
+        type: 'Dragon',
+        makesContact: true,
+        category: 'Physical',
+        priority: 1
+    },
+    'Dragonify': {
+        bp: 0,
+        type: 'Dragon',
+        category: 'Status'
+    },
+    'Drakon Voice': {
+        bp: 30,
+        type: 'Dragon',
+        category: 'Special',
+        isSound: true
     },
     'Fell Stinger': {
         bp: 30,
@@ -1792,13 +1875,43 @@ var XY_PATCH = {
         breaksProtect: true,
         category: 'Special'
     },
+    'Jet Stream': {
+        bp: 0,
+        type: 'Dragon',
+        category: 'Status'
+    },
     'King\'s Shield': { bp: 0, type: 'Steel', priority: 4 },
+    'Livewire': {
+        bp: 0,
+        type: 'Electric',
+        category: 'Status'
+    },
+    'Lunar Cannon': {
+        bp: 105,
+        type: 'Dark',
+        category: 'Special'
+    },
+    'Medusa Ray': {
+        bp: 0,
+        type: 'Rock',
+        category: 'Status'
+    },
     'Misty Terrain': { bp: 0, type: 'Fairy' },
     'Mystical Fire': {
         bp: 65,
         type: 'Fire',
         category: 'Special',
         secondaries: true
+    },
+    'Nano Repair': {
+        bp: 0,
+        type: 'Steel',
+        category: 'Status'
+    },
+    'New Moon': {
+        bp: 0,
+        type: 'Dark',
+        category: 'Status'
     },
     'Parabolic Charge': {
         bp: 50,
@@ -1808,6 +1921,11 @@ var XY_PATCH = {
         category: 'Special'
     },
     'Parting Shot': { bp: 0, type: 'Dark', isSound: true },
+    'Permafrost': {
+        bp: 0,
+        type: 'Ice',
+        category: 'Status'
+    },
     'Phantom Force': {
         bp: 90,
         type: 'Ghost',
@@ -1816,7 +1934,18 @@ var XY_PATCH = {
         category: 'Physical'
     },
     Powder: { bp: 0, type: 'Bug', priority: 1 },
+    'Retrograde': {
+        bp: 0,
+        type: 'Normal',
+        category: 'Status'
+    },
     'Spiky Shield': { bp: 0, type: 'Grass', priority: 4 },
+    'Spirit Away': {
+        bp: 100,
+        type: 'Fairy',
+        makesContact: true,
+        category: 'Physical'
+    },
     'Thousand Arrows': { bp: 90, type: 'Ground', target: 'allAdjacentFoes', category: 'Physical' },
     'Thousand Waves': { bp: 90, type: 'Ground', target: 'allAdjacentFoes', category: 'Physical' },
     'Water Shuriken': {
@@ -1824,6 +1953,24 @@ var XY_PATCH = {
         type: 'Water',
         multihit: [2, 5],
         priority: 1,
+        category: 'Physical'
+    },
+    'Wildfire': {
+        bp: 0,
+        type: 'Fire',
+        category: 'Status'
+    },
+    'Wormhole': {
+        bp: 40,
+        type: 'Psychic',
+        category: 'Special',
+        priority: 1,
+        breaksProtect: true
+    },
+    'Zombie Strike': {
+        bp: 90,
+        type: 'Ghost',
+        makesContact: true,
         category: 'Physical'
     },
     'Dragon Ascent': {

@@ -30,7 +30,7 @@ a img {
     padding: 15px 6px 15px 6px;
 }
 .header .nav {
-    padding: 15px 0 15px 295px;
+    padding: 15px 0 15px 155px;
 }
 .header .nav-play {
     padding: 15px 0 15px 10px;
@@ -43,8 +43,8 @@ a img {
 }
 .nav .button img {
     position: absolute;
-    top: -4px;
-    left: -245px;
+    top: -8px;
+    left: -150px;
 }
 .nav .button.cur,
 .nav .button.cur:hover {
@@ -429,6 +429,13 @@ table.field {
     min-width: 27em;
     min-height: 10em;
     resize: vertical;
+}
+
+.import-name-text {
+	min-width: 26.3em;
+    min-height: 1em;
+    overflow: auto;
+    display: inline;
 }
 
 .hpbar {

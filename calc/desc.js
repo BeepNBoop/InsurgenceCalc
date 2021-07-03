@@ -363,6 +363,10 @@ function getEndOfTurn(gen, attacker, defender, move, field) {
             texts.push('Phototroph recovery');
         }
     }
+    else if (attacker.hasAbility('Vaporization')) {
+        damage -= Math.floor(defender.maxHP() / 8);
+        texts.push(attacker.ability + ' damage');
+    }
     else if (!field.hasWeather('Sun', 'Harsh Sunshine', 'Darkness', 'Rain', 'Heavy Rain')) {
         if (defender.hasAbility('Phototroph')) {
             damage += Math.floor(defender.maxHP() / 16);

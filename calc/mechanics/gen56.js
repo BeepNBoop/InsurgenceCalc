@@ -76,6 +76,7 @@ function calculateBWXY(gen, attacker, defender, move, field) {
     }
     var isAerilate = false;
     var isPixilate = false;
+    var isIntoxicate = false;
     var isRefrigerate = false;
     var isNormalize = false;
     var noTypeChange = move.named('Judgment', 'Nature Power', 'Techo Blast', 'Natural Gift', 'Weather Ball');
@@ -87,13 +88,16 @@ function calculateBWXY(gen, attacker, defender, move, field) {
         else if ((isPixilate = attacker.hasAbility('Pixilate') && normal)) {
             move.type = 'Fairy';
         }
+        else if ((isIntoxicate = attacker.hasAbility('Intoxicate') && normal)) {
+            move.type = 'Fairy';
+        }
         else if ((isRefrigerate = attacker.hasAbility('Refrigerate') && normal)) {
             move.type = 'Ice';
         }
         else if ((isNormalize = attacker.hasAbility('Normalize'))) {
             move.type = 'Normal';
         }
-        if (isPixilate || isRefrigerate || isAerilate || isNormalize) {
+        if (isPixilate || isIntoxicate || isRefrigerate || isAerilate || isNormalize) {
             desc.attackerAbility = attacker.ability;
         }
     }
@@ -151,7 +155,8 @@ function calculateBWXY(gen, attacker, defender, move, field) {
     if ((defender.hasAbility('Wonder Guard') && typeEffectiveness <= 1) ||
         (move.hasType('Grass') && defender.hasAbility('Sap Sipper')) ||
         (move.hasType('Fire') && defender.hasAbility('Flash Fire')) ||
-        (move.hasType('Water') && defender.hasAbility('Dry Skin', 'Storm Drain', 'Water Absorb')) ||
+        (move.hasType('Flying') && defender.hasAbility('Wind Force')) ||
+        (move.hasType('Water') && defender.hasAbility('Dry Skin', 'Storm Drain', 'Water Absorb', 'Castle Moat', 'Vaporization')) ||
         (move.hasType('Electric') &&
             defender.hasAbility('Lightning Rod', 'Motor Drive', 'Volt Absorb')) ||
         (move.hasType('Ground') &&
@@ -409,6 +414,11 @@ function calculateBWXY(gen, attacker, defender, move, field) {
         bpMods.push(5325);
         desc.attackerAbility = attacker.ability;
     }
+    if (attacker.hasAbility('Spectral Jaws') && move.flags.bite) {
+        bpMods.push(5324.8);
+        move.category === 'Special';
+        desc.attackerAbility = attacker.ability;
+    }
     var aura = move.type + " Aura";
     var isAttackerAura = attacker.hasAbility(aura);
     var isDefenderAura = defender.hasAbility(aura);
@@ -495,9 +505,13 @@ function calculateBWXY(gen, attacker, defender, move, field) {
         }
     }
     if ((attacker.hasAbility('Guts') && attacker.status && move.category === 'Physical') ||
+        (attacker.hasAbility('Shadow Synergy') && move.hasType('Dark')) ||
         (attacker.curHP() <= attacker.maxHP() / 3 &&
             ((attacker.hasAbility('Overgrow') && move.hasType('Grass')) ||
                 (attacker.hasAbility('Blaze') && move.hasType('Fire')) ||
+                (attacker.hasAbility('Psycho Call') && move.hasType('Psychic')) ||
+                (attacker.hasAbility('Shadow Call') && move.hasType('Dark')) ||
+                (attacker.hasAbility('Spirit Away') && move.hasType('Ghost')) ||
                 (attacker.hasAbility('Torrent') && move.hasType('Water')) ||
                 (attacker.hasAbility('Swarm') && move.hasType('Bug')))) ||
         (move.category === 'Special' && attacker.abilityOn && attacker.hasAbility('Plus', 'Minus'))) {
@@ -529,7 +543,8 @@ function calculateBWXY(gen, attacker, defender, move, field) {
         atMods.push(2048);
         desc.attackerAbility = attacker.ability;
     }
-    else if (attacker.hasAbility('Huge Power', 'Pure Power') && move.category === 'Physical') {
+    else if ((attacker.hasAbility('Huge Power', 'Pure Power') && move.category === 'Physical') ||
+        (attacker.hasAbility('Athenian') && move.category === 'Special')) {
         atMods.push(8192);
         desc.attackerAbility = attacker.ability;
     }
@@ -656,7 +671,7 @@ function calculateBWXY(gen, attacker, defender, move, field) {
             stabMod = 6144;
         }
     }
-    else if (attacker.hasAbility('Protean')) {
+    else if (attacker.hasAbility('Protean', 'Ancient Presence')) {
         stabMod = 6144;
         desc.attackerAbility = attacker.ability;
     }
@@ -696,7 +711,7 @@ function calculateBWXY(gen, attacker, defender, move, field) {
         finalMods.push(3072);
         desc.defenderAbility = defender.ability;
     }
-    if (attacker.hasItem('Metronome') && move.timesUsedWithMetronome >= 1) {
+    if (attacker.hasItem('Metronome') || attacker.hasAbility('Pendulum') && move.timesUsedWithMetronome >= 1) {
         var timesUsedWithMetronome = Math.floor(move.timesUsedWithMetronome);
         if (timesUsedWithMetronome <= 4) {
             finalMods.push(4096 + timesUsedWithMetronome * 819);

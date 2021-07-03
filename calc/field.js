@@ -16,7 +16,7 @@ var __read = (this && this.__read) || function (o, n) {
     return ar;
 };
 exports.__esModule = true;
-
+exports.Side = exports.Field = void 0;
 var Field = (function () {
     function Field(field) {
         if (field === void 0) { field = {}; }
@@ -75,6 +75,7 @@ var Side = (function () {
         this.cannonade = !!side.cannonade;
         this.volcalith = !!side.volcalith;
         this.isSR = !!side.isSR;
+        this.isF = !!side.isF;
         this.isReflect = !!side.isReflect;
         this.isLightScreen = !!side.isLightScreen;
         this.isProtected = !!side.isProtected;

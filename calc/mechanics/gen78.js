@@ -65,7 +65,7 @@ function calculateSMSS(gen, attacker, defender, move, field) {
                 : field.hasWeather('Rain', 'Heavy Rain') && !holdingUmbrella ? 'Water'
                     : field.hasWeather('Darkness') && !holdingUmbrella ? 'Dark'
                         : field.hasWeather('Sand') ? 'Rock'
-                            : field.hasWeather('Hail') ? 'Ice'
+                            : field.hasWeather('Hail', 'Sleet') ? 'Ice'
                                 : 'Normal';
         desc.weather = field.weather;
         desc.moveType = type;
@@ -293,7 +293,7 @@ function calculateSMSS(gen, attacker, defender, move, field) {
         baseDamage = util_2.pokeRound(util_2.OF32(baseDamage * 6144) / 4096);
         desc.weather = field.weather;
     }
-    else if (!noWeatherBoost && (field.hasWeather('Sun', 'Harsh Sunshine') &&
+    else if (!noWeatherBoost && (field.hasWeather('Darkness') &&
         (move.hasType('Dark') || move.hasType('Ghost')))) {
         baseDamage = util_2.pokeRound(util_2.OF32(baseDamage * 5529.6) / 4096);
         desc.weather = field.weather;
@@ -718,7 +718,7 @@ function calculateBPModsSMSS(gen, attacker, defender, move, field, desc, basePow
         desc.attackerItem = attacker.item;
     }
     if (move.named('Solar Beam', 'Solar Blade') &&
-        field.hasWeather('Rain', 'Heavy Rain', 'Sand', 'Hail')) {
+        field.hasWeather('Rain', 'Heavy Rain', 'Sand', 'Hail', 'Sleet')) {
         bpMods.push(2048);
         desc.moveBP = basePower / 2;
         desc.weather = field.weather;
@@ -832,8 +832,7 @@ function calculateAtModsSMSS(gen, attacker, defender, move, field, desc) {
     else if ((attacker.hasAbility('Solar Power') &&
         field.hasWeather('Sun', 'Harsh Sunshine') &&
         move.category === 'Special') ||
-        (attacker.named('Cherrim') &&
-            attacker.hasAbility('Flower Gift') &&
+        (attacker.hasAbility('Flower Gift') &&
             field.hasWeather('Sun', 'Harsh Sunshine') &&
             move.category === 'Physical') ||
         (attacker.hasAbility('Gorilla Tactics') && move.category === 'Physical' &&

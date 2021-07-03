@@ -45,9 +45,10 @@ function calculateBWXY(gen, attacker, defender, move, field) {
         move.type =
             field.hasWeather('Sun', 'Harsh Sunshine') ? 'Fire'
                 : field.hasWeather('Rain', 'Heavy Rain') ? 'Water'
-                    : field.hasWeather('Sand') ? 'Rock'
-                        : field.hasWeather('Hail') ? 'Ice'
-                            : 'Normal';
+                    : field.hasWeather('Darkness') ? 'Dark'
+                        : field.hasWeather('Sand') ? 'Rock'
+                            : field.hasWeather('Hail', 'Sleet') ? 'Ice'
+                                : 'Normal';
         desc.weather = field.weather;
         desc.moveType = move.type;
     }
@@ -363,7 +364,7 @@ function calculateBWXY(gen, attacker, defender, move, field) {
         bpMods.push(8192);
         desc.moveBP = basePower * 2;
     }
-    else if (move.named('Solar Beam') && field.hasWeather('Rain', 'Heavy Rain', 'Sand', 'Hail')) {
+    else if (move.named('Solar Beam') && field.hasWeather('Rain', 'Heavy Rain', 'Sand', 'Hail', 'Sleet')) {
         bpMods.push(2048);
         desc.moveBP = basePower / 2;
         desc.weather = field.weather;
@@ -499,8 +500,7 @@ function calculateBWXY(gen, attacker, defender, move, field) {
     else if ((attacker.hasAbility('Solar Power') &&
         field.hasWeather('Sun', 'Harsh Sunshine') &&
         move.category === 'Special') ||
-        (attacker.named('Cherrim') &&
-            attacker.hasAbility('Flower Gift') &&
+        (attacker.hasAbility('Flower Gift') &&
             field.hasWeather('Sun', 'Harsh Sunshine') &&
             move.category === 'Physical')) {
         atMods.push(6144);
@@ -561,8 +561,7 @@ function calculateBWXY(gen, attacker, defender, move, field) {
         dfMods.push(6144);
         desc.defenderAbility = defender.ability;
     }
-    else if (defender.named('Cherrim') &&
-        defender.hasAbility('Flower Gift') &&
+    else if (defender.hasAbility('Flower Gift') &&
         field.hasWeather('Sun', 'Harsh Sunshine') &&
         !hitsPhysical) {
         dfMods.push(6144);
@@ -604,9 +603,22 @@ function calculateBWXY(gen, attacker, defender, move, field) {
         baseDamage = util_2.pokeRound(util_2.OF32(baseDamage * 6144) / 4096);
         desc.weather = field.weather;
     }
+    else if (field.hasWeather('Darkness') &&
+        (move.hasType('Dark') || move.hasType('Ghost'))) {
+        baseDamage = util_2.pokeRound(util_2.OF32(baseDamage * 5529.6) / 4096);
+        desc.weather = field.weather;
+    }
+    else if ((move.hasType('Dark') || move.hasType('Ghost'))) {
+        baseDamage = util_2.pokeRound(util_2.OF32(baseDamage * 5529.6) / 4096);
+        desc.weather = field.weather;
+    }
     else if ((field.hasWeather('Sun') && move.hasType('Water')) ||
         (field.hasWeather('Rain') && move.hasType('Fire'))) {
         baseDamage = util_2.pokeRound(util_2.OF32(baseDamage * 2048) / 4096);
+        desc.weather = field.weather;
+    }
+    else if ((field.hasWeather('Darkness') && move.hasType('Fairy'))) {
+        baseDamage = util_2.pokeRound(util_2.OF32(baseDamage * 3072) / 4096);
         desc.weather = field.weather;
     }
     else if ((field.hasWeather('Harsh Sunshine') && move.hasType('Water')) ||

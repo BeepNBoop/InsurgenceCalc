@@ -160,12 +160,6 @@ function getMoveEffectiveness(gen, move, type, isGhostRevealed, isGravity) {
     else if (move.named('Freeze-Dry') && type === 'Water') {
         return 2;
     }
-    else if (move.named('Corrode') && type === 'Steel') {
-        return 2;
-    }
-    else if (move.named('Achilles Heel')) {
-        return 2;
-    }
     else if (move.named('Flying Press')) {
         return (gen.types.get('fighting').effectiveness[type] *
             gen.types.get('flying').effectiveness[type]);

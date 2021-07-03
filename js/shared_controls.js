@@ -251,6 +251,14 @@ function autosetWeather(ability, i) {
 		lastAutoWeather[i] = "Hail";
 		$("#hail").prop("checked", true);
 		break;
+	case "Sleet":
+		lastAutoWeather[i] = "Sleet";
+		$("#sleet").prop("checked", true);
+		break;
+	case "Noctem":
+		lastAutoWeather[i] = "Darkness";
+		$("#darkness").prop("checked", true);
+		break;
 	case "Desolate Land":
 		lastAutoWeather[i] = "Harsh Sunshine";
 		$("#harsh-sunshine").prop("checked", true);

@@ -41,7 +41,7 @@ var Pokemon = (function () {
         if (this.weightkg === 0 && !this.isDynamaxed && this.species.baseSpecies) {
             this.weightkg = gen.species.get(util_1.toID(this.species.baseSpecies)).weightkg;
         }
-        this.level = options.level || 120;
+        this.level = 120;
         this.gender = options.gender || this.species.gender || 'M';
         this.ability = options.ability || ((_b = this.species.abilities) === null || _b === void 0 ? void 0 : _b[0]) || undefined;
         this.abilityOn = !!options.abilityOn;

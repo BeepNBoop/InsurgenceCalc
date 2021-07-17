@@ -24,7 +24,7 @@ export declare class Side implements State.Side {
     cannonade: boolean;
     volcalith: boolean;
     isSR: boolean;
-    isF: boolean;
+    isFoundry: boolean;
     isReflect: boolean;
     isLightScreen: boolean;
     isProtected: boolean;

@@ -310,7 +310,7 @@ function getHazards(gen, defender, defenderSide) {
         damage += Math.floor((effectiveness * defender.maxHP()) / 8);
         texts.push('Stealth Rock');
     }
-    if (defenderSide.isFoundry && !defender.hasAbility('Magic Guard', 'Mountaineer')) {
+    if (defenderSide.isF && !defender.hasAbility('Magic Guard', 'Mountaineer')) {
         var fireType = gen.types.get('fire');
         var effectiveness = fireType.effectiveness[defender.types[0]] *
             (defender.types[1] ? fireType.effectiveness[defender.types[1]] : 1);

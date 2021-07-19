@@ -6313,7 +6313,7 @@ var XY_PATCH = {
     },
     'Bisharp-Delta-Mega': {
         types: ['Flying', 'Fighting'],
-        bs: { hp: 65, at: 145, df: 125, sa: 60, sd: 85, sp: 105 },
+        bs: { hp: 65, at: 145, df: 130, sa: 60, sd: 85, sp: 105 },
         weightkg: 70,
         abilities: { 0: 'Technician' },
         baseSpecies: 'Bisharp-Delta'

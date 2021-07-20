@@ -7212,68 +7212,68 @@ var XY_PATCH = {
         weightkg: 22.6,
         abilities: { 0: 'Marvel Scale' }
     },
-    'Beldum-Delta-S': {
+    'Beldum-Delta-Spider': {
         types: ['Ground', 'Bug'],
         bs: { hp: 40, at: 55, df: 80, sa: 35, sd: 60, sp: 30 },
         weightkg: 47.5,
         abilities: { 0: 'Poison Heal' },
         nfe: true
     },
-    'Metang-Delta-S': {
+    'Metang-Delta-Spider': {
         types: ['Ground', 'Bug'],
         bs: { hp: 60, at: 75, df: 100, sa: 55, sd: 80, sp: 50 },
         weightkg: 101.3,
         abilities: { 0: 'Poison Heal' },
         nfe: true
     },
-    'Metagross-Delta-S': {
+    'Metagross-Delta-Spider': {
         types: ['Ground', 'Bug'],
         bs: { hp: 80, at: 135, df: 130, sa: 95, sd: 90, sp: 70 },
         weightkg: 224,
         abilities: { 0: 'Poison Heal' },
-        otherFormes: ['Metagross-Delta-S-Mega']
+        otherFormes: ['Metagross-Delta-Spider-Mega']
     },
-    'Metagross-Delta-S-Mega': {
+    'Metagross-Delta-Spider-Mega': {
         types: ['Ground', 'Bug'],
         bs: { hp: 80, at: 145, df: 150, sa: 105, sd: 110, sp: 110 },
         weightkg: 942.9,
         abilities: { 0: 'Mold Breaker' },
-        baseSpecies: 'Metagross-Delta-S'
+        baseSpecies: 'Metagross-Delta-Spider'
     },
-    'Beldum-Delta-R': {
+    'Beldum-Delta-Ruin': {
         types: ['Grass', 'Rock'],
         bs: { hp: 40, at: 55, df: 80, sa: 35, sd: 60, sp: 30 },
         weightkg: 95.2,
         abilities: { 0: 'Rock Head' },
         nfe: true
     },
-    'Metang-Delta-R': {
+    'Metang-Delta-Ruin': {
         types: ['Grass', 'Rock'],
         bs: { hp: 60, at: 75, df: 100, sa: 55, sd: 80, sp: 50 },
         weightkg: 202.5,
         abilities: { 0: 'Rock Head' },
         nfe: true
     },
-    'Metagross-Delta-R': {
+    'Metagross-Delta-Ruin': {
         types: ['Grass', 'Rock'],
         bs: { hp: 80, at: 135, df: 130, sa: 95, sd: 90, sp: 70 },
         weightkg: 550,
         abilities: { 0: 'Rock Head' },
-        otherFormes: ['Metagross-Delta-R-Mega']
+        otherFormes: ['Metagross-Delta-Ruin-Mega']
     },
-    'Metagross-Delta-R-Mega': {
+    'Metagross-Delta-Ruin-Mega': {
         types: ['Grass', 'Rock'],
         bs: { hp: 80, at: 145, df: 150, sa: 105, sd: 110, sp: 110 },
         weightkg: 942.9,
         abilities: { 0: 'Rock Head' },
-        baseSpecies: 'Metagross-Delta-R'
+        baseSpecies: 'Metagross-Delta-Ruin'
     },
-    'Metagross-Delta-R-Crystal': {
+    'Metagross-Delta-Ruin-Crystal': {
         types: ['Grass', 'Crystal'],
         bs: { hp: 80, at: 180, df: 100, sa: 120, sd: 100, sp: 100 },
         weightkg: 942.9,
         abilities: { 0: 'Weak Armor' },
-        baseSpecies: 'Metagross-Delta-R'
+        baseSpecies: 'Metagross-Delta-Ruin'
     },
     'Buneary-Delta': {
         types: ['Fighting'],
@@ -7350,27 +7350,27 @@ var XY_PATCH = {
         weightkg: 200.5,
         abilities: { 0: 'Mold Breaker' }
     },
-    'Petilil-Delta-F': {
+    'Petilil-Delta-Fairy': {
         types: ['Fairy', 'Flying'],
         bs: { hp: 45, at: 35, df: 50, sa: 70, sd: 50, sp: 30 },
         weightkg: 6.6,
         abilities: { 0: 'Serene Grace' },
         nfe: true
     },
-    'Lilligant-Delta-F': {
+    'Lilligant-Delta-Fairy': {
         types: ['Fairy', 'Flying'],
         bs: { hp: 70, at: 60, df: 75, sa: 110, sd: 75, sp: 90 },
         weightkg: 16.3,
         abilities: { 0: 'Serene Grace' }
     },
-    'Petilil-Delta-W': {
+    'Petilil-Delta-Water': {
         types: ['Water', 'Fire'],
         bs: { hp: 45, at: 35, df: 50, sa: 70, sd: 50, sp: 30 },
         weightkg: 6.6,
         abilities: { 0: 'Storm Drain' },
         nfe: true
     },
-    'Lilligant-Delta-W': {
+    'Lilligant-Delta-Water': {
         types: ['Water', 'Fire'],
         bs: { hp: 70, at: 60, df: 75, sa: 110, sd: 75, sp: 90 },
         weightkg: 16.3,
@@ -7415,27 +7415,27 @@ var XY_PATCH = {
         weightkg: 28,
         abilities: { 0: 'Motor Drive' }
     },
-    'Dwebble-Delta-B': {
+    'Dwebble-Delta-Berry': {
         types: ['Grass', 'Poison'],
         bs: { hp: 50, at: 65, df: 85, sa: 35, sd: 35, sp: 55 },
         weightkg: 14.5,
         abilities: { 0: 'Harvest' },
         nfe: true
     },
-    'Crustle-Delta-B': {
+    'Crustle-Delta-Berry': {
         types: ['Grass', 'Poison'],
         bs: { hp: 70, at: 105, df: 125, sa: 65, sd: 75, sp: 45 },
         weightkg: 150,
         abilities: { 0: 'Harvest' }
     },
-    'Dwebble-Delta-C': {
+    'Dwebble-Delta-Cak': {
         types: ['Fairy', 'Normal'],
         bs: { hp: 50, at: 65, df: 85, sa: 35, sd: 35, sp: 55 },
         weightkg: 14.5,
         abilities: { 0: 'Simple' },
         nfe: true
     },
-    'Crustle-Delta-C': {
+    'Crustle-Delta-Cake': {
         types: ['Fairy', 'Normal'],
         bs: { hp: 70, at: 105, df: 125, sa: 65, sd: 75, sp: 45 },
         weightkg: 100,
@@ -7577,9 +7577,9 @@ var XY_PATCH = {
         bs: { hp: 85, at: 60, df: 65, sa: 135, sd: 105, sp: 100 },
         weightkg: 46,
         abilities: { 0: 'Levitate' },
-        otherFormes: ['Volcarona-Delta-Armor']
+        otherFormes: ['Volcarona-Delta-Armored']
     },
-    'Volcarona-Delta-Armor': {
+    'Volcarona-Delta-Armored': {
         types: ['Dark', 'Poison'],
         bs: { hp: 85, at: 60, df: 90, sa: 135, sd: 130, sp: 100 },
         weightkg: 46,
@@ -9243,8 +9243,8 @@ var SS_PATCH = {
     'Blaziken-Delta': { abilities: { 0: 'Magic Guard' } },
     'Doduo-Delta': { abilities: { 0: 'Psychic Surge' } },
     'Dodrio-Delta': { abilities: { 0: 'Psychic Surge' } },
-    'Petilil-Delta-F': { abilities: { 0: 'Regenerator' } },
-    'Lilligant-Delta-F': { abilities: { 0: 'Regenerator' } },
+    'Petilil-Delta-Fairy': { abilities: { 0: 'Regenerator' } },
+    'Lilligant-Delta-Fairy': { abilities: { 0: 'Regenerator' } },
     'Karrablast-Delta': { abilities: { 0: 'Misty Surge' } },
     'Escavalier-Delta': { abilities: { 0: 'Misty Surge' } },
     'Cryogonal-Mega': { bs: { hp: 80, df: 80, sa: 130 } },

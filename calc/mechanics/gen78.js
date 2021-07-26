@@ -193,6 +193,8 @@ function calculateSMSS(gen, attacker, defender, move, field) {
         (move.hasType('Grass') && defender.hasAbility('Sap Sipper')) ||
         (move.hasType('Fire') && defender.hasAbility('Flash Fire')) ||
         (move.hasType('Flying') && defender.hasAbility('Wind Force')) ||
+        (move.hasType('Normal') && defender.hasAbility('Ethereal Shroud') && !attacker.hasAbility('Scrappy')) ||
+        (move.hasType('Fighting') && defender.hasAbility('Ethereal Shroud') && !attacker.hasAbility('Scrappy')) ||
         (move.hasType('Water') && defender.hasAbility('Dry Skin', 'Storm Drain', 'Water Absorb', 'Castle Moat', 'Vaporization')) ||
         (move.hasType('Electric') &&
             defender.hasAbility('Lightning Rod', 'Motor Drive', 'Volt Absorb')) ||
@@ -1064,6 +1066,10 @@ function calculateFinalModsSMSS(gen, attacker, defender, move, field, desc, isCr
     }
     if (defender.hasAbility('Fluffy') && move.hasType('Fire')) {
         finalMods.push(8192);
+        desc.defenderAbility = defender.ability;
+    }
+    if (defender.hasAbility('Ethereal Shroud') && (move.hasType('Bug') || move.hasType('Poison'))) {
+        finalMods.push(2048);
         desc.defenderAbility = defender.ability;
     }
     if (attacker.hasItem('Expert Belt') && typeEffectiveness > 1 && !move.isZ) {
